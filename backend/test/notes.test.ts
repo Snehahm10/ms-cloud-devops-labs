@@ -9,6 +9,11 @@ describe('buildNote', () => {
     expect(note.id).toHaveLength(36);
   });
 
+  it('trims surrounding whitespace from the body', () => {
+  expect(buildNote({ title: 'Valid title', body: '  hello  ' }).body)
+    .toBe('hello');
+});
+
   it('trims surrounding whitespace from the title', () => {
     expect(buildNote({ title: '  spaced out  ', body: '' }).title).toBe('spaced out');
   });
